@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C88D289F-ED31-A952-FE00-049F8C5E136F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>5.2.2f1</UnityVersion>
+    <RootNamespace></RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_2_2;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_2_2;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Spaceship5.CSharp.Plugins.csproj">
+      <Project>{8DD4F821-41CF-78FB-A3C7-96C6C687FF11}</Project>
+      <Name>Spaceship5.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Game\ATargetable.cs" />
+    <Compile Include="Assets\Game\Actor.cs" />
+    <Compile Include="Assets\Game\BattleScape\ActionsManager.cs" />
+    <Compile Include="Assets\Game\BattleScape\BattleScape.cs" />
+    <Compile Include="Assets\Game\BattleScape\ConfigurationManager.cs" />
+    <Compile Include="Assets\Game\BattleScape\Effects\DamageEffectsFactory.cs" />
+    <Compile Include="Assets\Game\BattleScape\Effects\DeathEffectsFactory.cs" />
+    <Compile Include="Assets\Game\BattleScape\EndGameScripts.cs" />
+    <Compile Include="Assets\Game\BattleScape\Players\BSPlayer.cs" />
+    <Compile Include="Assets\Game\BattleScape\Players\EnemyAI.cs" />
+    <Compile Include="Assets\Game\BattleScape\Players\PlayerAction.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\Ships\Components\Laser.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\Ships\Components\Projectile.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\Ships\ParticleSystemAutoDestroy.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\Ships\Ship.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\Ships\ShipSpawner.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\Ships\ShipState.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\Ships\ShipVisual.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\SolarObjects\Moon.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\SolarObjects\Planet.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\SolarObjects\PlanetUnderAttack.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\SolarObjects\SolarObject.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\SolarObjects\SolarSystem.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\SolarObjects\Star.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\SpaceObject.cs" />
+    <Compile Include="Assets\Game\BattleScape\TurnManager.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\ActionMenuScripts.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\BattleScapeCamera.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\GUIManager.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\HPBar.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\Highlight\CurrentShipHighlight.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\Highlight\SelectionHighlight.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\Highlight\TargetHighlight.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\InputManager.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\NextShipScript.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\Path\CollisionMarker.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\Path\MovementIndicator.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\Path\PathDisplay.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\Path\PathPlanner.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\Path\TrailButton.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\Path\Waypoint.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\TurnTextScript.cs" />
+    <Compile Include="Assets\Game\Componenets\ASpaceshipComponent.cs" />
+    <Compile Include="Assets\Game\Componenets\Capacitor.cs" />
+    <Compile Include="Assets\Game\Componenets\Drive.cs" />
+    <Compile Include="Assets\Game\Componenets\Hull.cs" />
+    <Compile Include="Assets\Game\Componenets\PowerPlant.cs" />
+    <Compile Include="Assets\Game\Componenets\Sensor.cs" />
+    <Compile Include="Assets\Game\Componenets\Shield.cs" />
+    <Compile Include="Assets\Game\Componenets\Weapons\DamageTypes.cs" />
+    <Compile Include="Assets\Game\Componenets\Weapons\Emitter.cs" />
+    <Compile Include="Assets\Game\Componenets\Weapons\FiringConditions.cs" />
+    <Compile Include="Assets\Game\Componenets\Weapons\Weapon.cs" />
+    <Compile Include="Assets\Game\Componenets\Weapons\WeaponEmitter.cs" />
+    <Compile Include="Assets\Game\Componenets\Weapons\WeaponFiringModes.cs" />
+    <Compile Include="Assets\Game\Componenets\Weapons\WeaponStatus.cs" />
+    <Compile Include="Assets\Game\Componenets\Weapons\WeaponTargeting.cs" />
+    <Compile Include="Assets\Game\Componenets\Weapons\WeaponTracking.cs" />
+    <Compile Include="Assets\Game\Componenets\Weapons\WeaponUI.cs" />
+    <Compile Include="Assets\Game\Componenets\Weapons\WeaponValidTargetTypes.cs" />
+    <Compile Include="Assets\Game\Debree.cs" />
+    <Compile Include="Assets\Game\IPhasing.cs" />
+    <Compile Include="Assets\Game\Installation.cs" />
+    <Compile Include="Assets\Game\LAC.cs" />
+    <Compile Include="Assets\Game\Levels\Level.cs" />
+    <Compile Include="Assets\Game\Levels\LevelManager.cs" />
+    <Compile Include="Assets\Game\Levels\LevelSettings.cs" />
+    <Compile Include="Assets\Game\Levels\LevelStatistics.cs" />
+    <Compile Include="Assets\Game\Main.cs" />
+    <Compile Include="Assets\Game\Mat.cs" />
+    <Compile Include="Assets\Game\Modules\GravityModule.cs" />
+    <Compile Include="Assets\Game\Modules\IModule.cs" />
+    <Compile Include="Assets\Game\Modules\ModuleManager.cs" />
+    <Compile Include="Assets\Game\Pawn.cs" />
+    <Compile Include="Assets\Game\Player.cs" />
+    <Compile Include="Assets\Game\Projectiles\Projectile.cs" />
+    <Compile Include="Assets\Game\Projectiles\ProjectileBaseTypes.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\AProjectileProperty.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\Beam.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\Cloaking.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\Evasion.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\Fueselage.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\Phasing.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\Propulsion.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\ProximityDetector.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\Sensors.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\Shield.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\Targeting.cs" />
+    <Compile Include="Assets\Game\Projectiles\Properties\Warhead.cs" />
+    <Compile Include="Assets\Game\Scenarios\Scenario.cs" />
+    <Compile Include="Assets\Game\ShipDesigner\Dock.cs" />
+    <Compile Include="Assets\Game\ShipDesigner\ShipDesignManager.cs" />
+    <Compile Include="Assets\Game\ShipWeightClasses.cs" />
+    <Compile Include="Assets\Game\Spaceship.cs" />
+    <Compile Include="Assets\Game\StarScape\Connection.cs" />
+    <Compile Include="Assets\Game\StarScape\InputManager.cs" />
+    <Compile Include="Assets\Game\StarScape\Star.cs" />
+    <Compile Include="Assets\Game\StarScape\StarChart.cs" />
+    <Compile Include="Assets\Game\StarScape\StarScape.cs" />
+    <Compile Include="Assets\Game\StarScape\StarWay.cs" />
+    <Compile Include="Assets\Game\StarScape\TurnManager.cs" />
+    <Compile Include="Assets\Game\TargetComparing\ATargetComparer.cs" />
+    <Compile Include="Assets\Game\TargetComparing\TargetCompareClosestAngle.cs" />
+    <Compile Include="Assets\Game\TargetComparing\TargetCompareHealthiest.cs" />
+    <Compile Include="Assets\Game\TargetComparing\TargetCompareLeastHealth.cs" />
+    <Compile Include="Assets\Game\TargetComparing\TargetCompareNearest.cs" />
+    <Compile Include="Assets\Game\TargetComparing\TargetCompareToughest.cs" />
+    <Compile Include="Assets\Game\UI\Cameras\CameraController.cs" />
+    <Compile Include="Assets\Game\UI\Cameras\CameraModes.cs" />
+    <Compile Include="Assets\Game\UI\Cameras\CamerasManager.cs" />
+    <Compile Include="Assets\Game\UI\Cameras\MinimapCamera.cs" />
+    <Compile Include="Assets\Game\UI\Cameras\MouseOrbit.cs" />
+    <Compile Include="Assets\Game\UI\Cameras\MouseOrbitImproved.cs" />
+    <Compile Include="Assets\Game\UI\Cameras\SmoothFollow2.cs" />
+    <Compile Include="Assets\Game\UI\Cameras\TopDownFollowCamera.cs" />
+    <Compile Include="Assets\Game\UI\Cameras\ZoomCamera.cs" />
+    <Compile Include="Assets\Game\UI\HUDs\FireControl\UIFiringMode.cs" />
+    <Compile Include="Assets\Game\UI\HUDs\FireControl\UITargetingMode.cs" />
+    <Compile Include="Assets\Game\UI\HUDs\FireControl\UIWeapon.cs" />
+    <Compile Include="Assets\Game\UI\HUDs\FireControl\UIWeaponsList.cs" />
+    <Compile Include="Assets\Game\UI\HUDs\HUD.cs" />
+    <Compile Include="Assets\Game\UI\HealthBar.cs" />
+    <Compile Include="Assets\Game\UI\InfoCards\ActorInfoCard.cs" />
+    <Compile Include="Assets\Game\UI\InfoCards\HealthBar.cs" />
+    <Compile Include="Assets\Game\UI\InfoCards\InfoCard.cs" />
+    <Compile Include="Assets\Game\UI\InputManager.cs" />
+    <Compile Include="Assets\Game\UI\Minimap\IMinimapVisible.cs" />
+    <Compile Include="Assets\Game\UI\Minimap\Minimap.cs" />
+    <Compile Include="Assets\Game\UI\Minimap\MinimapMarker.cs" />
+    <Compile Include="Assets\Game\UI\ShipDesigner\ClearDockPromptArgs.cs" />
+    <Compile Include="Assets\Game\UI\ShipDesigner\HullsMenu.cs" />
+    <Compile Include="Assets\Game\UI\ShipDesigner\Prompt.cs" />
+    <Compile Include="Assets\Game\UI\ShipDesigner\PromptAction.cs" />
+    <Compile Include="Assets\Game\UI\ShipDesigner\PromptActionCancel.cs" />
+    <Compile Include="Assets\Game\UI\ShipDesigner\PromptActionToClearDock.cs" />
+    <Compile Include="Assets\Game\UI\ShipDesigner\PromptArgs.cs" />
+    <Compile Include="Assets\Game\UI\ShipDesigner\PromptToClearDock.cs" />
+    <Compile Include="Assets\Game\UI\ShipDesigner\PromptsManager.cs" />
+    <Compile Include="Assets\Game\UI\ShipDesigner\ShipDesignerUI.cs" />
+    <Compile Include="Assets\Game\UI\UIManager.cs" />
+    <Compile Include="Assets\Game\UI\UserAction.cs" />
+    <Compile Include="Assets\Utils\ArrayExtensions.cs" />
+    <Compile Include="Assets\Utils\Collections\BinaryHeap.cs" />
+    <Compile Include="Assets\Utils\Collections\SerializableDictionary.cs" />
+    <Compile Include="Assets\Utils\Controuring3D.cs" />
+    <Compile Include="Assets\Utils\DontGoThroughThings.cs" />
+    <Compile Include="Assets\Utils\DropDownList\SelectionBox.cs" />
+    <Compile Include="Assets\Utils\DropDownList\SelectionBoxOption.cs" />
+    <Compile Include="Assets\Utils\Easing.cs" />
+    <Compile Include="Assets\Utils\EditorCoroutine.cs" />
+    <Compile Include="Assets\Utils\EnumExtensions.cs" />
+    <Compile Include="Assets\Utils\EnumerableExtensions.cs" />
+    <Compile Include="Assets\Utils\GUI\FaceCamera.cs" />
+    <Compile Include="Assets\Utils\GameObjectExtensions.cs" />
+    <Compile Include="Assets\Utils\Geometry3D.cs" />
+    <Compile Include="Assets\Utils\ImprovedMonoBehaviour.cs" />
+    <Compile Include="Assets\Utils\ImprovedUnitySingletonPresistenty.cs" />
+    <Compile Include="Assets\Utils\Int2.cs" />
+    <Compile Include="Assets\Utils\Int3.cs" />
+    <Compile Include="Assets\Utils\ListExtensions.cs" />
+    <Compile Include="Assets\Utils\Math3D.cs" />
+    <Compile Include="Assets\Utils\MeshExtensions.cs" />
+    <Compile Include="Assets\Utils\Pivot.cs" />
+    <Compile Include="Assets\Utils\PointPositionComparer.cs" />
+    <Compile Include="Assets\Utils\Range.cs" />
+    <Compile Include="Assets\Utils\RectTransformExtensions.cs" />
+    <Compile Include="Assets\Utils\ReflectionExtensions.cs" />
+    <Compile Include="Assets\Utils\Stats\BaseStat.cs" />
+    <Compile Include="Assets\Utils\Stats\CappedStat.cs" />
+    <Compile Include="Assets\Utils\Stats\CappedStatUpdater.cs" />
+    <Compile Include="Assets\Utils\Stats\DerivedStat.cs" />
+    <Compile Include="Assets\Utils\Stats\StatModifier.cs" />
+    <Compile Include="Assets\Utils\StringExtensions.cs" />
+    <Compile Include="Assets\Utils\UnitySingleton.cs" />
+    <Compile Include="Assets\Utils\UnitySingletonPresistent.cs" />
+    <Compile Include="Assets\Utils\WaitForSecondsOrAnyKey.cs" />
+    <Compile Include="Assets\Utils\WeightedRandomizer.cs" />
+    <Compile Include="Assets\Utils\YieldInstructionEmulation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Content\GenericSpaceships.xml" />
+    <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
+</Project>
