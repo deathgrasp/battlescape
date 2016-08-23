@@ -7,8 +7,11 @@ namespace Assets.Game.BattleScape.VisualObjects.Highlight
         private static TargetHighlight _targetHighlightPrefab;
         public static TargetHighlight Create(Transform transform)
         {
-            var targetnHighlight = Instantiate(_targetHighlightPrefab ??
-                                (_targetHighlightPrefab = Resources.Load<TargetHighlight>("BattleScape/TargetHighlight")));
+            if (_targetHighlightPrefab == null)
+            {
+                _targetHighlightPrefab = Resources.Load<TargetHighlight>("BattleScape/TargetHighlight");
+            }
+            var targetnHighlight = Instantiate(_targetHighlightPrefab);
 
             targetnHighlight.transform.position = transform.position;
             targetnHighlight.transform.SetParent(transform);

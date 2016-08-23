@@ -276,6 +276,19 @@ namespace Assets.Game.BattleScape.VisualObjects.Path
                     ship.ClearPath();
                 }
             }
+            foreach (var wp in Legs.Values)
+            {
+                var waypoint = wp;
+                while (waypoint != null)
+                {
+                    foreach (var mesh in waypoint.GetComponentsInChildren<MeshRenderer>())
+                    {
+                        mesh.enabled = false;
+                    }
+                    waypoint = waypoint.NextAction;
+                }
+            }
+            InputManager.Instance.MovementIndicator.gameObject.SetActive(false);
         }
         public static void OnPause()
         {
