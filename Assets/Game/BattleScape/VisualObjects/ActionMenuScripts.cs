@@ -19,6 +19,8 @@ namespace Assets.Game.BattleScape.VisualObjects
         public void ShootAtLocation()
         {
             Debug.Log("shoot at location clicked");
+            InputManager.Instance.DelayFrame = true;
+
             InputManager.Instance.LocationAction = true;
             InputManager.Instance.GunShotAction = true;
             ConfigurationManager.Instance.ActionMenu.gameObject.SetActive(false);

@@ -106,16 +106,21 @@ namespace Assets.Game.BattleScape.VisualObjects
                                 //sets the ship to be active and located at the waypoint
                                 var ship = shipVisual.Parent;
                                 Ship.changeActiveShip(ship);
+                                Debug.Log("[ship][in input]old shooting towards: "+ship.ShipState.GunShotTarget+" at  with state id: "+ship.ShipState.Id);
+                                Debug.Log("[BS ship][in input]old shooting towards: " + BattleScape.Instance.Ship.ShipState.GunShotTarget + " at  with state id: " + BattleScape.Instance.Ship.ShipState.Id);
 
                                 ship.ShipState = shipVisual.ShipState;
+
                                 ship.transform.position = shipVisual.GetComponentInParent<Waypoint>().transform.position;
                                 ship.transform.rotation = shipVisual.transform.rotation;
                                 ship.AttackObject(ship.AttackTarget);
                                 BattleScape.Instance.Ship = ship;
+                                Debug.Log("[ship][in input]new shooting towards: " + ship.ShipState.GunShotTarget + " at  with state id: " + ship.ShipState.Id);
+                                Debug.Log("[BS ship][in input]old shooting towards: " + BattleScape.Instance.Ship.ShipState.GunShotTarget + " at  with state id: " + BattleScape.Instance.Ship.ShipState.Id);
 
                             }
                         }
-                        if (Input.GetMouseButtonDown(1))
+                        else if (Input.GetMouseButtonDown(1))
                         {
                             Debug.Log("Right Clicking");
                             //can't target friendly ships
@@ -181,7 +186,7 @@ namespace Assets.Game.BattleScape.VisualObjects
                                 {
                                     BattleScape.Instance.Ship.ShootAt(position);
                                     Instantiate(TargetIndicatorPrefab, position,Quaternion.identity);
-                                    Debug.Log("shooting towards: "+position.ToString());
+                                    Debug.Log("shooting towards: "+position.ToString()+ " for state id: "+BattleScape.Instance.Ship.ShipState.Id);
                                     LocationAction = false;
                                     GunShotAction = false;
 
@@ -191,7 +196,7 @@ namespace Assets.Game.BattleScape.VisualObjects
                             if (!LocationAction && Input.GetMouseButtonDown(1))
                             {
                                 Debug.Log("right click");
-                                const float SAMEPLACE = 0.001f;
+                                const float SAMEPLACE = 0.005f;
                                 if ((ship.transform.position - ship.StartState.Position).sqrMagnitude < SAMEPLACE)//right click on empty place=cancel.
                                 {
                                     PathPlanner.TotalPathingTime = float.MaxValue;

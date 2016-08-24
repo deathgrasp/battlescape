@@ -97,6 +97,7 @@ namespace Assets.Game.BattleScape.VisualObjects.Path
             ship.transform.rotation = rotation;
             ship.MovementTarget = null; //last step always stops
             BattleScape.Instance.Ship.Path.GetComponent<CanvasGroup>().alpha = 1;
+            TotalPathingTime = 0;
         }
 
         private static Waypoint CreateShipLegWaypoint(Ship ship)
@@ -202,6 +203,7 @@ namespace Assets.Game.BattleScape.VisualObjects.Path
                 ship.transform.rotation = rotation; ship.MovementTarget = oldMoveTarget;
             }
             BattleScape.Instance.Ship.Path.GetComponent<CanvasGroup>().alpha = 1;
+            TotalPathingTime = 0;
         }
         private static void CheckIfWaypointReached(Ship ship, float time)
         {
@@ -343,7 +345,7 @@ namespace Assets.Game.BattleScape.VisualObjects.Path
                 (TurnManager.Instance.GamePaused && Legs.ContainsKey(ship) && waypoint != null &&
                  TotalPathingTime >= waypoint.Time)
             {
-
+                Debug.Log("switching to next ship action, from stateid: "+ship.ShipState.Id +" to stateid: "+waypoint.ShipVisual.ShipState.Id);
                 ship.ShipState = waypoint.ShipVisual.ShipState;
                 ship.ShipState.NextWaypoint = waypoint.NextAction;
                 ship.AttackObject(ship.AttackTarget);

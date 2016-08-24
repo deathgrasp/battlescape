@@ -11,7 +11,7 @@ using Assets.Game.BattleScape.VisualObjects.Path;
 
 
 /*TODO: fix UI Fixed- the endgame canvas blocked the raycast.
- * make sure commands are always excuted
+ * make sure commands are always excuted - Timer wasn't being reset at the end of planning phase. fixed.
  * make space ships continue moving forward (instead of staying still)
  * new ships. shotgun ship, exploding (aoe) missile
  * 
@@ -158,11 +158,8 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
                     MovementTarget = null;
                     InputManager.Instance.MovementIndicator.gameObject.SetActive(false);
                 }
-                else
-                {
-                    transform.position += transform.forward * step * MovementSpeed;
-                }
             }
+                    transform.position += transform.forward * step * MovementSpeed;
         }
 
         private void GravityPull(float step)

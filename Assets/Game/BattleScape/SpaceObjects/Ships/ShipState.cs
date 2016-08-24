@@ -7,7 +7,8 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
 /// A class used to remember the ships state, such as movement's target or attack's target.
 /// </summary>
    public class ShipState
-    {
+{
+    public int Id = Random.Range(int.MinValue, int.MaxValue);
         public Vector3? MovementTarget { get; set; }
         public Waypoint NextWaypoint;
         public float RotationSpeed = ConfigurationManager.Instance.RotationSpeed;
