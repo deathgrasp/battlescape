@@ -6,12 +6,21 @@ namespace Assets.Game.BattleScape.VisualObjects
         public void CreateWaypoint()
         {
             InputManager.Instance.DelayFrame=true;
+            InputManager.Instance.WaypointAction = true;
             InputManager.Instance.LocationAction = true;
             ConfigurationManager.Instance.ActionMenu.gameObject.SetActive(false);
         }
         public void AttackTarget()
         {
             InputManager.Instance.SpaceObjectAction = true;
+            ConfigurationManager.Instance.ActionMenu.gameObject.SetActive(false);
+        }
+
+        public void ShootAtLocation()
+        {
+            Debug.Log("shoot at location clicked");
+            InputManager.Instance.LocationAction = true;
+            InputManager.Instance.GunShotAction = true;
             ConfigurationManager.Instance.ActionMenu.gameObject.SetActive(false);
         }
         public void Update()

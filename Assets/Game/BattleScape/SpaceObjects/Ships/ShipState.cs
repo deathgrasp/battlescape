@@ -1,4 +1,5 @@
-﻿using Assets.Game.BattleScape.VisualObjects.Path;
+﻿using Assets.Game.BattleScape.SpaceObjects.WeaponFire;
+using Assets.Game.BattleScape.VisualObjects.Path;
 using UnityEngine;
 
 namespace Assets.Game.BattleScape.SpaceObjects.Ships
@@ -14,6 +15,7 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
         public SpaceObject AttackTarget;
         public Vector3 Position;
         public Quaternion Rotation;
-        
+        public Vector3 GunShotTarget;
+    public float ShotTimer=0f;
     }
 }

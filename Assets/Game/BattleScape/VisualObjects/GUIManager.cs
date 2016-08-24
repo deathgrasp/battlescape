@@ -23,6 +23,7 @@ namespace Assets.Game.BattleScape.VisualObjects
         {
             var groupController = BattleScape.Instance.EndGamePanel.GetComponent<CanvasGroup>();
             groupController.interactable = true;
+            groupController.GetComponentInParent<GraphicRaycaster>().enabled = true;
             groupController.alpha = 1;
         }
         public void FadeEndScreen()
@@ -30,6 +31,7 @@ namespace Assets.Game.BattleScape.VisualObjects
             var groupController = BattleScape.Instance.EndGamePanel.GetComponent<CanvasGroup>();
             groupController.interactable = false;
             groupController.alpha = 0;
+            groupController.GetComponentInParent<GraphicRaycaster>().enabled = false;
         }
 
         public void UpdateHealthBar(float health)

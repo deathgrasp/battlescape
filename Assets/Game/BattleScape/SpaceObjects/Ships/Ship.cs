@@ -6,7 +6,17 @@ using Assets.Game.BattleScape.VisualObjects;
 using UnityEngine;
 using System.Collections.Generic;
 using Assets.Game.BattleScape.SpaceObjects.SolarObjects;
+using Assets.Game.BattleScape.SpaceObjects.WeaponFire;
 using Assets.Game.BattleScape.VisualObjects.Path;
+
+
+/*TODO: fix UI Fixed- the endgame canvas blocked the raycast.
+ * make sure commands are always excuted
+ * make space ships continue moving forward (instead of staying still)
+ * new ships. shotgun ship, exploding (aoe) missile
+ * 
+ */
+
 
 namespace Assets.Game.BattleScape.SpaceObjects.Ships
 {
@@ -33,6 +43,20 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
             get { return ShipState.AttackTarget; }
             set { ShipState.AttackTarget = value; }
         }
+
+        public Vector3 GunShotTarget
+        {
+            get { return ShipState.GunShotTarget; }
+            set { ShipState.GunShotTarget = value; }
+        }
+
+        public float ShotTimer
+        {
+            get { return ShipState.ShotTimer; }
+            set { ShipState.ShotTimer = value; }
+        }
+
+        private int _bulletCounter = 0;
         #endregion Ship State
         public ShipState ShipState {
             get; set; }
@@ -81,8 +105,43 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
                 ShipDestruction();
             }
             GravityPull(Time.deltaTime);
+            var gs = GunShotTarget;
+
+            Shoot();
+            
         }
 
+        private void Shoot()
+        {
+            if (ShotTimer <= 0 && _bulletCounter<=GunShot.BASESHOTBURST)
+            {                
+                    if (GunShotTarget != Vector3.zero && TurnManager.Instance.GamePaused == false)
+                    {
+                        GunShot.Create(transform.position, GunShotTarget - transform.position, GunShot.BASEDAMAGE,
+                            GunShot.BASESPEED);
+                        Debug.Log("shot fired!");
+                    _bulletCounter += 1;
+                    ShotTimer += GunShot.BASESHOOTDELAY;
+                    if(_bulletCounter>=GunShot.BASESHOTBURST)
+                        GunShotTarget = Vector3.zero;
+
+                }
+            }
+                ShotTimer -= Time.deltaTime;
+        }
+
+        public void ShootAt(Vector3 position)
+        {
+            GunShotTarget = position;
+            if (_bulletCounter >= GunShot.BASESHOTBURST)
+            {
+                _bulletCounter = 0;
+            }
+            if (ShotTimer <= 0)
+            {
+                ShotTimer = 0;
+            }
+        }
         private void Move(float step)
         {
             if (MovementTarget.HasValue)

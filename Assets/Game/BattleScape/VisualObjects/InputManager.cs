@@ -1,5 +1,6 @@
 ﻿using Assets.Game.BattleScape.SpaceObjects;
 using Assets.Game.BattleScape.SpaceObjects.Ships;
+using Assets.Game.BattleScape.SpaceObjects.WeaponFire;
 using Assets.Game.BattleScape.VisualObjects.Path;
 using Assets.Utils;
 using UnityEngine;
@@ -8,14 +9,30 @@ using UnityEngine.UI;
 namespace Assets.Game.BattleScape.VisualObjects
 {    /// <summary>
      /// In charge of inputs and their effects, such as right click.</summary>
+
+    
     public class InputManager : UnitySingleton<InputManager>
     {
+
+        private static TargetIndicator _targetIndicatorPrefab;
+
+        public static TargetIndicator TargetIndicatorPrefab
+        {
+            get
+            {
+                return _targetIndicatorPrefab ?? (_targetIndicatorPrefab = Resources.Load<TargetIndicator>("BattleScape/TargetIndicator"));
+            }
+        }
+
+
         public bool DelayFrame = false;
         public SpaceObject LastHitSpaceObject;
         public SpaceObject CurrentTarget;
         private MovementIndicator _movementIndicator;
         public MovementIndicator MovementIndicator { get { return _movementIndicator ?? (_movementIndicator = Instantiate(MovementIndicator.MovementIndicatorPrefab)); } }
         public bool LocationAction = false;
+    public bool WaypointAction = false;
+    public bool GunShotAction = false;
         public bool SpaceObjectAction = false;
         public Waypoint WaypointForAction;
         private void Update()
@@ -84,7 +101,7 @@ namespace Assets.Game.BattleScape.VisualObjects
                                 var shipVisual = hit.transform.GetComponent<ShipVisual>();
                                 //pops the menu up
                                 ConfigurationManager.Instance.ActionMenu.gameObject.SetActive(true);
-                                ConfigurationManager.Instance.ActionMenu.transform.position = shipVisual.transform.position;
+                                ConfigurationManager.Instance.ActionMenu.transform.position = shipVisual.transform.position+new Vector3(0,-1,0);
                                 WaypointForAction = shipVisual.GetComponentInParent<Waypoint>();
                                 //sets the ship to be active and located at the waypoint
                                 var ship = shipVisual.Parent;
@@ -137,26 +154,39 @@ namespace Assets.Game.BattleScape.VisualObjects
                             if (LocationAction && Input.GetMouseButtonDown(0))
                             {
                                 var position = ray.GetPoint(distanceToPlane);
-
-                                var waypoint = Waypoint.Create(position, ship);
-                                if (WaypointForAction != null)
+                                if (WaypointAction)
                                 {
-                                    WaypointForAction.AddWaypoint(waypoint, true);
-                                    PathPlanner.ResetWaypointPathTime(WaypointForAction);
+                                    var waypoint = Waypoint.Create(position, ship);
+                                    if (WaypointForAction != null)
+                                    {
+                                        WaypointForAction.AddWaypoint(waypoint, true);
+                                        PathPlanner.ResetWaypointPathTime(WaypointForAction);
+                                    }
+                                    else
+                                    {
+                                        PathPlanner.Legs[ship].AddAtEnd(waypoint);
+                                    }
+
+                                    MovementIndicator.gameObject.SetActive(true);
+                                    MovementIndicator.transform.position = position;
+                                    WaypointForAction.ShipVisual.ShipState.MovementTarget = position;
+
+                                    PathPlanner.ClearPaths();
+                                    ship.RestoreState();
+                                    PathPlanner.PlanPath();
+                                    LocationAction = false;
+                                    WaypointAction = false;
                                 }
-                                else
+                                else if (GunShotAction)
                                 {
-                                    PathPlanner.Legs[ship].AddAtEnd(waypoint);
+                                    BattleScape.Instance.Ship.ShootAt(position);
+                                    Instantiate(TargetIndicatorPrefab, position,Quaternion.identity);
+                                    Debug.Log("shooting towards: "+position.ToString());
+                                    LocationAction = false;
+                                    GunShotAction = false;
+
                                 }
-
-                                MovementIndicator.gameObject.SetActive(true);
-                                MovementIndicator.transform.position = position;
-                                WaypointForAction.ShipVisual.ShipState.MovementTarget = position;
-
-                                PathPlanner.ClearPaths();
-                                ship.RestoreState();
-                                PathPlanner.PlanPath();
-                                LocationAction = false;
+                                
                             }
                             if (!LocationAction && Input.GetMouseButtonDown(1))
                             {

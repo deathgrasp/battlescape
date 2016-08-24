@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -92,6 +94,7 @@
     <Compile Include="Assets\Game\BattleScape\SpaceObjects\SolarObjects\SolarSystem.cs" />
     <Compile Include="Assets\Game\BattleScape\SpaceObjects\SolarObjects\Star.cs" />
     <Compile Include="Assets\Game\BattleScape\SpaceObjects\SpaceObject.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\WeaponFire\GunShot.cs" />
     <Compile Include="Assets\Game\BattleScape\TurnManager.cs" />
     <Compile Include="Assets\Game\BattleScape\VisualObjects\ActionMenuScripts.cs" />
     <Compile Include="Assets\Game\BattleScape\VisualObjects\BattleScapeCamera.cs" />
@@ -108,6 +111,7 @@
     <Compile Include="Assets\Game\BattleScape\VisualObjects\Path\PathPlanner.cs" />
     <Compile Include="Assets\Game\BattleScape\VisualObjects\Path\TrailButton.cs" />
     <Compile Include="Assets\Game\BattleScape\VisualObjects\Path\Waypoint.cs" />
+    <Compile Include="Assets\Game\BattleScape\VisualObjects\TargetIndicator.cs" />
     <Compile Include="Assets\Game\BattleScape\VisualObjects\TurnTextScript.cs" />
     <Compile Include="Assets\Utils\GUI\FaceCamera.cs" />
     <Compile Include="Assets\Utils\GameObjectExtensions.cs" />
