@@ -173,7 +173,15 @@ namespace Assets.Game.BattleScape.VisualObjects.Path
             foreach (var ship in Ships)
             {
                 TotalPathingTime = 0;
-
+                var wp = ship.ShipState.NextWaypoint;
+                while (wp!=null)
+                {
+                    foreach (var mesh in wp.GetComponentsInChildren<MeshRenderer>())
+                    {
+                        mesh.enabled = true;
+                    }
+                    wp = wp.NextAction;
+                }
                 var pos = ship.transform.position;
                 var rotation = ship.transform.rotation;
                 var oldMoveTarget = ship.MovementTarget;

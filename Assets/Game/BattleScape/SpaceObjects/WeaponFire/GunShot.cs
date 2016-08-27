@@ -6,8 +6,6 @@ namespace Assets.Game.BattleScape.SpaceObjects.WeaponFire
     public class GunShot :Projectile
     {
         //change these in the future to the correct location.
-        public static int BASEDAMAGE = 100;
-        public static float BASESPEED = 10f;
         public static int BASESHOTBURST = 10;
         public static float BASESHOOTDELAY = 0.1f;
         private static  GunShot _gunShotPrefab;
@@ -21,13 +19,10 @@ namespace Assets.Game.BattleScape.SpaceObjects.WeaponFire
         }
         private Vector3 _direction;
 
-        public static void Create(Vector3 startLocation, Vector3 direction, int damage, float speed)
+        public static void Create(Vector3 startLocation, Vector3 direction)
         {
             var gunshot = Instantiate(GunShotPrefab, startLocation, Quaternion.identity) as GunShot;
             gunshot._direction = direction.normalized;
-            gunshot.Damage = damage;
-            gunshot.Speed = speed;
-            gunshot.Lifetime = 10;
             gunshot.gameObject.transform.position += gunshot._direction;
         }
 

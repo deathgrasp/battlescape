@@ -68,34 +68,40 @@ namespace Assets.Game.BattleScape.VisualObjects.Path
             Debug.Log("trail click");
             if (Parent is Ship)
             {
-                var ship = Parent as Ship;
+                var ship = (Ship) Parent;
                 ship.TrailRenderer.time = 0;
 
                 //if (!PathPlanner.Legs.ContainsKey(ship))
                 //{
                 //    PathPlanner.Legs[ship] = new List<TrailButton>();
                 //}
-                if (ShipVisual == null)
-                {
-                    ShipVisual = ShipVisual.Create(Position, Rotation);
-                }
-                else
-                {
-                    ShipVisual.gameObject.SetActive(true);
-                }
-                ShipVisual.ShipState.MovementTarget = ship.MovementTarget;
+                //if (ShipVisual == null)
+                //{
+                //    ShipVisual = ShipVisual.Create(Position, Rotation);
+                //}
+                //else
+                //{
+                //    ShipVisual.gameObject.SetActive(true);
+                //}
+
+                var waypoint = Waypoint.Create(transform.position, ship);
+                waypoint.Time = Time;
+                PathPlanner.Legs[ship].AddAtEnd(waypoint);
+                waypoint.PreviousAction.ShipVisual.ShipState.MovementTarget = transform.position;
+                ShipVisual = waypoint.ShipVisual;
+                //ShipVisual.ShipState.MovementTarget = ship.MovementTarget;
 
 
-                ShipVisual.transform.parent = transform.parent;
-                ShipVisual.ShipState.Position = Position;
-                ShipVisual.ShipState.Rotation = Rotation;
-                BattleScape.Instance.Ship.RestoreState();
+                //ShipVisual.transform.parent = transform.parent;
+                //ShipVisual.ShipState.Position = Position;
+                //ShipVisual.ShipState.Rotation = Rotation;
+                //BattleScape.Instance.Ship.RestoreState();
 
                 //PathPlanner.Legs[ship].Add(this);
-                SetShipState(ship);
-                
-                ship.TrailRenderer.time = ship.OriginalTrailRendererTime;
 
+                SetShipState(ship);
+                ShipVisual.transform.rotation = Rotation;
+                ship.TrailRenderer.time = ship.OriginalTrailRendererTime;
                 ConfigurationManager.Instance.ActionMenu.gameObject.SetActive(true);
                 ConfigurationManager.Instance.ActionMenu.transform.position = transform.position;
 

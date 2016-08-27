@@ -11,9 +11,9 @@ using Assets.Game.BattleScape.VisualObjects.Path;
 
 
 /*TODO: fix UI Fixed- the endgame canvas blocked the raycast.
- * make sure commands are always excuted - Timer wasn't being reset at the end of planning phase. fixed.
- * make space ships continue moving forward (instead of staying still)
- * new ships. shotgun ship, exploding (aoe) missile
+ * make sure commands are always excuted - Timer wasn't being reset at the end of planning phase. fixed?.
+ * make space ships continue moving forward (instead of staying still) - fixed
+ * new ships. shotgun ship, exploding (aoe) missile. missile up
  * 
  */
 
@@ -58,8 +58,10 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
 
         private int _bulletCounter = 0;
         #endregion Ship State
-        public ShipState ShipState {
-            get; set; }
+        public ShipState ShipState
+        {
+            get; set;
+        }
         private float _stopMovementThreshold = 0.1f;
 
         public float OriginalTrailRendererTime
@@ -70,11 +72,13 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
 
         public bool IsInvincible;
 
-            public BSPlayer Player;
+        public BSPlayer Player;
 
-            private TrailRenderer _trailRenderer;
+        private TrailRenderer _trailRenderer;
 
-            public event Action<Ship> OnMove;
+        public event Action<Ship> OnMove;
+
+        public Projectile WeaponProjectile;
 
         public TrailRenderer TrailRenderer
         {
@@ -89,7 +93,7 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
                 return _trailRenderer;
             }
         }
-        public int ActionsIndex=0;
+        public int ActionsIndex = 0;
         private void Update()
         {
             //checks if the game met the requirements to change to the next action. if it does, switch.
@@ -108,26 +112,44 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
             var gs = GunShotTarget;
 
             Shoot();
-            
+
         }
 
+        public bool UseMissile=false;//change to a propper function, used for fast prototyping under assumption of not touching too much more
         private void Shoot()
         {
-            if (ShotTimer <= 0 && _bulletCounter<=GunShot.BASESHOTBURST)
-            {                
+            if (UseMissile)
+            {
+                if (ShotTimer <= 0 && _bulletCounter <= Missile.BASESHOTBURST)
+                {
                     if (GunShotTarget != Vector3.zero && TurnManager.Instance.GamePaused == false)
                     {
-                        GunShot.Create(transform.position, GunShotTarget - transform.position, GunShot.BASEDAMAGE,
-                            GunShot.BASESPEED);
+                        Missile.Create(transform.position, GunShotTarget - transform.position);
                         Debug.Log("shot fired!");
-                    _bulletCounter += 1;
-                    ShotTimer += GunShot.BASESHOOTDELAY;
-                    if(_bulletCounter>=GunShot.BASESHOTBURST)
-                        GunShotTarget = Vector3.zero;
-
+                        _bulletCounter += 1;
+                        ShotTimer += Missile.BASESHOOTDELAY;
+                        if (_bulletCounter >= Missile.BASESHOTBURST)
+                            GunShotTarget = Vector3.zero;
+                    }
                 }
             }
-                ShotTimer -= Time.deltaTime;
+            else
+            {
+                if (ShotTimer <= 0 && _bulletCounter <= GunShot.BASESHOTBURST)
+                {
+                    if (GunShotTarget != Vector3.zero && TurnManager.Instance.GamePaused == false)
+                    {
+                        GunShot.Create(transform.position, GunShotTarget - transform.position);
+                        Debug.Log("shot fired!");
+                        _bulletCounter += 1;
+                        ShotTimer += GunShot.BASESHOOTDELAY;
+                        if (_bulletCounter >= GunShot.BASESHOTBURST)
+                            GunShotTarget = Vector3.zero;
+                    }
+                }
+            }
+            
+            ShotTimer -= Time.deltaTime;
         }
 
         public void ShootAt(Vector3 position)
@@ -159,7 +181,7 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
                     InputManager.Instance.MovementIndicator.gameObject.SetActive(false);
                 }
             }
-                    transform.position += transform.forward * step * MovementSpeed;
+            transform.position += transform.forward * step * MovementSpeed;
         }
 
         private void GravityPull(float step)
@@ -207,7 +229,7 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
                 {
                     Debug.Log(spaceObject.Health);
                     DamageEffectsFactory.Instance.StartDamageEffect(collision.contacts[0].point, Quaternion.identity, this);
-                    ChangeHealth(-( spaceObject.Health * ConfigurationManager.Instance.RammingDamageModifier + ConfigurationManager.Instance.RammingExtraDamage));
+                    ChangeHealth(-(spaceObject.Health * ConfigurationManager.Instance.RammingDamageModifier + ConfigurationManager.Instance.RammingExtraDamage));
                 }
             }
         }
@@ -266,7 +288,7 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
         {
             ShipState = new ShipState();
             StartState = ShipState;
-            PathDisplay.Instance.DrawPartialTrajectory(trajectory, trajectoryRotation, this,0f);
+            PathDisplay.Instance.DrawPartialTrajectory(trajectory, trajectoryRotation, this, 0f);
             Player = player;
             MaxHealth = startingHealth;
             ShipState.Position = transform.position;
@@ -287,8 +309,8 @@ namespace Assets.Game.BattleScape.SpaceObjects.Ships
             transform.rotation = ShipState.Rotation;
             AttackObject(AttackTarget);
             TrailRenderer.time = OriginalTrailRendererTime;
-           // PathPlanner.CheckDirt(this); //removes clean buttoms and actions from the list
-           // ShipState.NextWaypoint = PathPlanner.Legs[this];
+            // PathPlanner.CheckDirt(this); //removes clean buttoms and actions from the list
+            // ShipState.NextWaypoint = PathPlanner.Legs[this];
         }
 
         public void AttackObject(SpaceObject target)

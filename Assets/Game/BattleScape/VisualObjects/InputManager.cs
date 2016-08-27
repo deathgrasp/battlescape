@@ -84,6 +84,8 @@ namespace Assets.Game.BattleScape.VisualObjects
                                 CurrentTarget.SetTarget(true);
                                 if (!(Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.LeftShift)))
                                 {
+                                    BattleScape.Instance.Ship.RestoreState();
+                                    PathPlanner.PlanPath();
                                     SpaceObjectAction = false; //one action, unless shift is pressed
                                 }
                             }
@@ -187,6 +189,8 @@ namespace Assets.Game.BattleScape.VisualObjects
                                     BattleScape.Instance.Ship.ShootAt(position);
                                     Instantiate(TargetIndicatorPrefab, position,Quaternion.identity);
                                     Debug.Log("shooting towards: "+position.ToString()+ " for state id: "+BattleScape.Instance.Ship.ShipState.Id);
+                                    ship.RestoreState();
+                                    PathPlanner.PlanPath();
                                     LocationAction = false;
                                     GunShotAction = false;
 

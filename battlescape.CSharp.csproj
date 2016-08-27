@@ -94,6 +94,7 @@
     <Compile Include="Assets\Game\BattleScape\SpaceObjects\SolarObjects\SolarSystem.cs" />
     <Compile Include="Assets\Game\BattleScape\SpaceObjects\SolarObjects\Star.cs" />
     <Compile Include="Assets\Game\BattleScape\SpaceObjects\SpaceObject.cs" />
+    <Compile Include="Assets\Game\BattleScape\SpaceObjects\WeaponFire\Missile.cs" />
     <Compile Include="Assets\Game\BattleScape\SpaceObjects\WeaponFire\GunShot.cs" />
     <Compile Include="Assets\Game\BattleScape\TurnManager.cs" />
     <Compile Include="Assets\Game\BattleScape\VisualObjects\ActionMenuScripts.cs" />
