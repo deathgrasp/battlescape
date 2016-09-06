@@ -14,22 +14,14 @@ namespace Assets.Game.BattleScape.VisualObjects
     public class InputManager : UnitySingleton<InputManager>
     {
 
-        private static TargetIndicator _targetIndicatorPrefab;
-
-        public static TargetIndicator TargetIndicatorPrefab
-        {
-            get
-            {
-                return _targetIndicatorPrefab ?? (_targetIndicatorPrefab = Resources.Load<TargetIndicator>("BattleScape/TargetIndicator"));
-            }
-        }
-
 
         public bool DelayFrame = false;
         public SpaceObject LastHitSpaceObject;
         public SpaceObject CurrentTarget;
         private MovementIndicator _movementIndicator;
         public MovementIndicator MovementIndicator { get { return _movementIndicator ?? (_movementIndicator = Instantiate(MovementIndicator.MovementIndicatorPrefab)); } }
+        private static TargetIndicator _targetIndicator;
+        public TargetIndicator TargetIndicator { get { return _targetIndicator ?? (_targetIndicator = Instantiate(Resources.Load<TargetIndicator>("BattleScape/TargetIndicator"))); } }
         public bool LocationAction = false;
     public bool WaypointAction = false;
     public bool GunShotAction = false;
@@ -37,6 +29,10 @@ namespace Assets.Game.BattleScape.VisualObjects
         public Waypoint WaypointForAction;
         private void Update()
         {
+            if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0))
+            {
+                TargetIndicator.gameObject.SetActive(false);
+            }
             if (!DelayFrame)
             {
                 if (TurnManager.Instance.GamePaused)
@@ -187,7 +183,8 @@ namespace Assets.Game.BattleScape.VisualObjects
                                 else if (GunShotAction)
                                 {
                                     BattleScape.Instance.Ship.ShootAt(position);
-                                    Instantiate(TargetIndicatorPrefab, position,Quaternion.identity);
+                                    TargetIndicator.transform.position = position;
+                                    TargetIndicator.gameObject.SetActive(true);
                                     Debug.Log("shooting towards: "+position.ToString()+ " for state id: "+BattleScape.Instance.Ship.ShipState.Id);
                                     ship.RestoreState();
                                     PathPlanner.PlanPath();
