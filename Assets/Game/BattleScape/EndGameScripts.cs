@@ -7,25 +7,22 @@ namespace Assets.Game.BattleScape
     {
         public void QuitGame()
         {
-			Debug.Log("Quitting");
-			GUIManager.Instance.FadeEndScreen();
-			if (Application.isEditor)
-	        {
-		        UnityEditor.EditorApplication.isPlaying = false;
-	        }
-	        else
-	        {
+            Debug.Log("Quitting");
+            GUIManager.Instance.FadeEndScreen();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
 		        Application.Quit();
-	        }
+#endif
 
         }
 
         public void RestartGame()
         {
             PathDisplay.Instance.ClearAllTrajectories();
-			Debug.Log("Restarting");
+            Debug.Log("Restarting");
             GUIManager.Instance.FadeEndScreen();
-			Application.LoadLevel(Application.loadedLevel);
+            Application.LoadLevel(Application.loadedLevel);
 
         }
     }
